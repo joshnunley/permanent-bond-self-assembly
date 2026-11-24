@@ -1,0 +1,13 @@
+n = 10, N_max = 16, exact arithmetic in Z[zeta_20], coin overlap, candidates: ngon
+  43 prefixes reach N_max  (32 s, 48591 bodies met, 0 high-precision comparisons)
+  N:                     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16
+  prefixes reaching:     1     1     4    62   952  1893  5388  1328   552   133    78    56    58    43    43    43
+  prefixes whose shapes S(1..N_max) are those of a listed family, at every N:
+    Z(10,2): 6 prefixes
+    Z(10,3): 6 prefixes
+    Z(10,4): 6 prefixes
+    ladder 72.0 E: 12 prefixes
+    ladder 72.0 T: 12 prefixes
+    row: 1 prefixes
+  listed sequences with no surviving prefix: none
+  unmatched prefixes: 0

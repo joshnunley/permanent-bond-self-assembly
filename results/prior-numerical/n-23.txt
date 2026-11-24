@@ -1,0 +1,16 @@
+n = 23, N_max = 16, cyclotomic arithmetic with a floating-point distance filter in Z[zeta_46], coin overlap, candidates: ngon
+  49 prefixes reach N_max  (2405 s, 1380825 bodies met, 0 high-precision comparisons)
+  N:                     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16
+  prefixes reaching:     1     1     8   342 10067 21685 68499 10760  2960   317   155    89    95    50    50    49
+  prefixes whose shapes S(1..N_max) are those of a listed family, at every N:
+    Z(23,10): 6 prefixes
+    Z(23,11): 6 prefixes
+    Z(23,4): 6 prefixes
+    Z(23,5): 6 prefixes
+    Z(23,6): 6 prefixes
+    Z(23,7): 6 prefixes
+    Z(23,8): 6 prefixes
+    Z(23,9): 6 prefixes
+    arc(23,11): 1 prefixes
+  listed sequences with no surviving prefix: none
+  unmatched prefixes: 0
