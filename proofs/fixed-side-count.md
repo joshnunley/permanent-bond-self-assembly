@@ -1,4 +1,4 @@
-# Exhaustive classification for 3 ≤ n ≤ 16
+# Exhaustive classification for 3 ≤ n ≤ 23
 
 **Theorem.** For each integer n in this range, a merge-closed family of
 regular n-gon arrangements has one proper congruence class at each stock

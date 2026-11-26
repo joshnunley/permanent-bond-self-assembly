@@ -1,0 +1,14 @@
+chain prefixes F(1..K) of the word model (one class or a mirror pair at each N), by the number of turn sizes of S(K)
+  K: prefixes; with 0, 1, 2, 3 turn sizes
+   3:     2; 1, 1, 0, 0
+   4:    17; 1, 10, 6, 0
+   5:   167; 1, 64, 90, 12
+   6:   398; 1, 157, 208, 32
+   7:  1285; 1, 468, 700, 116
+   8:   376; 1, 199, 164, 12
+   9:   268; 1, 183, 84, 0
+  10:    67; 1, 66, 0, 0
+  11:    43; 1, 42, 0, 0
+  12:    21; 1, 20, 0, 0
+  13:    23; 1, 22, 0, 0
+So for K >= 10 every prefix has at most one turn size.

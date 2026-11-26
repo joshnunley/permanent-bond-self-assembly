@@ -4,8 +4,9 @@
 determinate permanent-bond rule of finite radius cannot produce the shapes
 of a nonstraight zigzag window family or of a two-row ladder family.
 The proof uses [the three models and the reachability lemma](rules.md)
-and the [continued-family geometry](continuation.md). Shape equivalence
-allows reflections.
+and the [continued-family geometry](continuation.md). References to A1 and
+A2 below mean independent replay and the two conclusions of the reachability
+lemma, respectively. Shape equivalence allows reflections.
 
 For even side counts a blank radius-zero rule produces the straight row.
 Give every singleton edge label q. On any nonsingleton, label a free edge t
@@ -16,7 +17,9 @@ two ends are the eligible edges, and any two can join end to end.
 Consequently, wherever the whole-body classification holds, the finite-radius
 classification is the row for even side counts and no determinate rule for
 odd side counts. The exclusion of zigzags and ladders is independent of
-that classification.
+that classification. The lower bound concerns labels determined by the
+current geometric neighborhood. See [propagation with retained states](propagation.md)
+for the distinct question of limiting update rounds between joins.
 
 **Lemma L′ (locality)**. Let X and X′ be joined into Y, and let e be a free edge of Y on a cell c of X. If no cell of X′ touches a cell of X at bond distance at most r from c in X, then N_r(Y, e) = N_r(X, e). So e has the same label in X and in Y.
 

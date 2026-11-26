@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock 2 · Squares · Permanent assembly atlas</title>
+  <link rel="stylesheet" href="../atlas.css">
+</head>
+<body>
+<main class="page">
+
+<nav class="trail" aria-label="Breadcrumb"><a href="../index.html">Atlas</a> / <a href="index.html">Squares</a> / Stock 2</nav>
+<header>
+  <h1>2 squares</h1>
+  <p>1 shapes · 1 guaranteed · 0 impossible</p>
+  <p>1 maximal factorization sets · 1 up to reflection</p>
+
+</header>
+<nav class="stocks" aria-label="Stock sizes"><a href="stock-01.html">1</a> <a href="stock-02.html" aria-current="page">2</a> <a href="stock-03.html">3</a> <a href="stock-04.html">4</a> <a href="stock-05.html">5</a> <a href="stock-06.html">6</a> <a href="stock-07.html">7</a> <a href="stock-08.html">8</a> <a href="stock-09.html">9</a> <a href="stock-10.html">10</a></nav>
+<div class="workspace">
+  <section class="gallery" aria-labelledby="shape-list-title">
+    <h2 id="shape-list-title">Shapes</h2>
+    <div class="filters">
+      <label>Result<select id="status"><option value="all">All shapes</option><option value="yes">Guaranteed</option><option value="no">Impossible</option></select></label>
+      <label>Shape ID<input id="search" type="search" autocomplete="off" placeholder="e.g. S02-0001"></label>
+    </div>
+    <div class="pagination"><button type="button" id="previous">Previous</button><span id="range" aria-live="polite"></span><button type="button" id="next">Next</button></div>
+    <div id="shapes" class="tiles"></div>
+  </section>
+  <section id="detail" class="detail" aria-label="Selected shape"></section>
+</div>
+<noscript><p>Enable JavaScript to browse shapes. The exact shape data is also embedded in this page.</p></noscript>
+
+</main>
+<script type="application/json" id="atlas-data">{"kind":"squares","stock":2,"rows":[{"id":"S02-0001","shape":[[0,0],[0,1]],"parts":[[[0,0]],[[0,0],[0,1]]],"factorizations":[[0,1]],"mirror_groups":1,"part_targets":["S01-0001","S02-0001"],"part_hands":["",""]}]}</script>
+<script defer src="../atlas.js"></script>
+</body>
+</html>

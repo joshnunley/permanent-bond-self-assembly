@@ -85,6 +85,18 @@ class CycField:
     def conj(self, a):
         return tuple((np.array(a, dtype=np.int64) @ self.C).tolist())
 
+    def conj(self, a):
+        return tuple((np.array(a, dtype=np.int64) @ self.C).tolist())
+
+    def mul(self, a, b):
+        """Product of two elements."""
+        out = np.zeros(self.phi, dtype=np.int64)
+        bb = np.array(b, dtype=np.int64)
+        for j, c in enumerate(a):
+            if c:
+                out += c * (bb @ self.R[j])
+        return tuple(out.tolist())
+
     def from_poly(self, d):
         """sum of c * zeta^e for a dict {e: c}."""
         v = [0] * self.phi
@@ -447,4 +459,79 @@ def ngon_candidates(Rg, n):
             out.update(ext(A))
         return out
 
+    return candidates
+
+
+def lemma15_candidates(Rg):
+    """Candidates by Lemma 15 of nonchain_attempt.md, for N + 1 >= 6, in exact arithmetic.
+
+    S(N + 1) = Y + x with Y a member of F(N), and for the split (3, N - 2) the part P that contains x is h(S_p),
+    p in {3, N - 2}, h an isometry, S_p a member of F(p). All cells of P except x are cells of Y. So x = h(c) for a
+    cell c of S_p, where h carries the other cells of S_p into Y. h(w) = y1 + rho (w - a) or y1 + rho conj(w - a)
+    with rho a root of unity of the field (see the note, Lemma 2.3). We fix two other cells a, b of S_p (a touching
+    pair if there is one) and run over all ordered pairs (y1, y2) of cells of Y with y2 - y1 = rho (b - a), resp.
+    rho conj(b - a)."""
+    F = Rg.F
+    Q = F.Q
+    cache = {}
+
+    def ext(Yid, Sid):
+        key = (Yid, Sid)
+        if key in cache:
+            return cache[key]
+        Y = Rg.bodies[Yid]
+        Ypos = Rg.pos[Yid]
+        Yarr = Rg.arr[Yid]
+        S = Rg.bodies[Sid]
+        p = len(S)
+        diffs = defaultdict(list)                      # y2 - y1 -> [index of y1]
+        for i in range(len(Y)):
+            for j in range(len(Y)):
+                if i != j:
+                    diffs[tuple((Yarr[j] - Yarr[i]).tolist())].append(i)
+        touching = defaultdict(set)
+        for (a, b, _) in Rg.pairs[Sid]:
+            touching[a].add(b)
+        out = set()
+        for flip in (False, True):
+            Sarr = Rg.arr[Sid] @ F.C if flip else Rg.arr[Sid]
+            for ci in range(p):
+                others = [t for t in range(p) if t != ci]
+                pair = None
+                for a in others:
+                    for b in others:
+                        if b in touching[a]:
+                            pair = (a, b)
+                            break
+                    if pair:
+                        break
+                if pair is None:
+                    pair = (others[0], others[1])
+                a, b = pair
+                e = Sarr[b] - Sarr[a]
+                rel = Sarr - Sarr[a]
+                for k in range(Q):
+                    d = tuple((e @ F.R[k]).tolist())
+                    for i1 in diffs.get(d, ()):
+                        img = (rel @ F.R[k] + Yarr[i1]).tolist()
+                        xn = tuple(img[ci])
+                        if xn in Ypos:
+                            continue
+                        if any(tuple(img[t]) not in Ypos for t in others):
+                            continue
+                        if Rg.valid_new(Y, xn):
+                            out.add(Rg.add(Y + (xn,)))
+        cache[key] = sorted(out)
+        return cache[key]
+
+    def candidates(Fam, N):
+        M = N + 1
+        assert M >= 6
+        out = set()
+        for Yid in Fam[N]:
+            for p in {3, M - 3}:
+                out.update(ext(Yid, Fam[p][0]))
+        return out
+
+    candidates.ext = ext
     return candidates

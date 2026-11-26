@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stock 4 · Triangles · Permanent assembly atlas</title>
+  <link rel="stylesheet" href="../atlas.css">
+</head>
+<body>
+<main class="page">
+
+<nav class="trail" aria-label="Breadcrumb"><a href="../index.html">Atlas</a> / <a href="index.html">Triangles</a> / Stock 4</nav>
+<header>
+  <h1>4 triangles</h1>
+  <p>3 shapes · 2 guaranteed · 1 impossible</p>
+  <p>2 maximal factorization sets · 2 up to reflection</p>
+
+</header>
+<nav class="stocks" aria-label="Stock sizes"><a href="stock-01.html">1</a> <a href="stock-02.html">2</a> <a href="stock-03.html">3</a> <a href="stock-04.html" aria-current="page">4</a> <a href="stock-05.html">5</a> <a href="stock-06.html">6</a> <a href="stock-07.html">7</a> <a href="stock-08.html">8</a> <a href="stock-09.html">9</a> <a href="stock-10.html">10</a></nav>
+<div class="workspace">
+  <section class="gallery" aria-labelledby="shape-list-title">
+    <h2 id="shape-list-title">Shapes</h2>
+    <div class="filters">
+      <label>Result<select id="status"><option value="all">All shapes</option><option value="yes">Guaranteed</option><option value="no">Impossible</option></select></label>
+      <label>Shape ID<input id="search" type="search" autocomplete="off" placeholder="e.g. T04-0001"></label>
+    </div>
+    <div class="pagination"><button type="button" id="previous">Previous</button><span id="range" aria-live="polite"></span><button type="button" id="next">Next</button></div>
+    <div id="shapes" class="tiles"></div>
+  </section>
+  <section id="detail" class="detail" aria-label="Selected shape"></section>
+</div>
+<noscript><p>Enable JavaScript to browse shapes. The exact shape data is also embedded in this page.</p></noscript>
+
+</main>
+<script type="application/json" id="atlas-data">{"kind":"triangles","stock":4,"rows":[{"id":"T04-0001","shape":[[1,1],[1,4],[2,2],[2,5]],"parts":[[[1,1]],[[1,1],[2,2]],[[1,1],[1,4],[2,2]],[[1,1],[1,4],[2,2],[2,5]],[[1,1],[2,2],[4,1],[5,2]]],"factorizations":[[0,1,2,3,4]],"mirror_groups":1,"part_targets":["T01-0001","T02-0001","T03-0001","T04-0001","T04-0001"],"part_hands":["","","","A","B"]},{"id":"T04-0002","shape":[[1,1],[1,4],[2,2],[4,1]],"parts":[],"factorizations":[],"mirror_groups":0,"part_targets":[],"part_hands":[]},{"id":"T04-0003","shape":[[1,4],[2,2],[2,5],[4,1]],"parts":[[[1,1]],[[1,1],[2,2]],[[1,1],[1,4],[2,2]],[[1,4],[2,2],[2,5],[4,1]]],"factorizations":[[0,1,2,3]],"mirror_groups":1,"part_targets":["T01-0001","T02-0001","T03-0001","T04-0003"],"part_hands":["","","",""]}]}</script>
+<script defer src="../atlas.js"></script>
+</body>
+</html>

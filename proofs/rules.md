@@ -12,11 +12,13 @@ placements within the two bodies persist. A whole-edge contact left
 unbonded stays unbonded. Labels are recomputed after each join.
 
 A label is a function of the marked edge and the structure visible from
-that edge, up to rotation and translation. The rule uses the same function
-and table for every stock size. Bodies have independent placements until
+that edge, up to rotation and translation. In the all-stock problem the same function
+and table are used at every stock size. Bodies have independent placements until
 they join. A join depends on its two participants and the proposed
 relative placement. A run can choose any allowed join and ends when no
-join is possible.
+join is possible. The stock and rule can be fixed just for one
+[designated target](fixed-target.md). The all-stock problem uses a single
+rule for every supply size.
 
 A rule is **determinate** if for every stock size N all maximal runs end
 in a single N-cell body, and those bodies have the same arrangement up
@@ -100,3 +102,10 @@ the shape sequences of merge-closed families. For each side count where
 the classification is established, a whole-body rule is determinate
 if and only if every pair of occurring bodies can join and its
 Reach family is one of the listed families up to global reflection.
+
+
+## Related models
+
+Polygonal free-body tile assembly also allows rotatable polygonal tiles. Here the cells are identical regular polygons, and the guarantee uses an unseeded finite supply and every allowed assembly history. [Demaine et al., *One Tile to Rule Them All*](https://arxiv.org/abs/1212.4756)
+
+Hierarchical tile assembly allows independently formed bodies to join. In the present model, permanence and exact finite stock impose a merge constraint on every split of the supply. [Doty, *Producibility in Hierarchical Self-Assembly*](https://arxiv.org/abs/1304.7804)
