@@ -74,7 +74,7 @@
     if (selection === row) link.setAttribute('aria-current', 'true');
     const count = row.factorizations.length;
     link.append(drawing(row.shape), element('strong', row.id),
-      element('span', count ? `${count} maximal ${count === 1 ? 'set' : 'sets'}` : 'Impossible', count ? 'yes' : 'no'));
+      element('span', count ? `${count} maximal ${count === 1 ? 'set' : 'sets'}` : 'No guaranteeing rule', count ? 'yes' : 'no'));
     if (row.target_state_bounds) link.append(element('span', stateCount(row.target_state_bounds), 'muted'));
     link.addEventListener('click', () => {
       if (matchMedia('(max-width: 760px)').matches) requestAnimationFrame(() => detail.scrollIntoView());
@@ -150,12 +150,12 @@
     const count = row.factorizations.length;
     const header = element('div', '', 'target-head');
     const labels = element('div');
-    labels.append(element('h2', row.id), element('strong', count ? 'Guaranteed' : 'Impossible', count ? 'yes' : 'no'));
+    labels.append(element('h2', row.id), element('strong', count ? 'Guaranteed' : 'No guaranteeing rule', count ? 'yes' : 'no'));
     if (row.target_state_bounds) labels.append(element('span', stateCount(row.target_state_bounds), 'muted'));
     header.append(drawing(row.shape), labels);
     detail.replaceChildren(header);
     if (!count) {
-      detail.append(element('p', 'No compatible factorization exists at this stock.'));
+      detail.append(element('p', 'The shape can occur in some histories. Every permanent rule has a failing history at this stock.'));
       return;
     }
     detail.append(element('h3', `${count} maximal ${count === 1 ? 'factorization' : 'factorizations'}`),

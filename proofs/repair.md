@@ -20,6 +20,16 @@ Fix the types of size at most $N/2$ in a valid [catalogue](fixed-target.md#the-c
 
 For the [seven-square row with a foot](../atlas/squares/stock-07.html#S07-0002), a straight four is repairable when the remaining three squares can stay as singleton and domino. A catalogue that can produce a straight trimer allows the replacements to preassemble into a part that cannot pack with the remnant. Both catalogues guarantee the original target from loose cells.
 
+### An exact repair probability
+
+Keep the straight-trimer catalogue for ordinary assembly. Let each unordered pair of bodies propose at unit rate, drawing uniformly from its distinct collision-free full-edge placements. At the wound, a singleton can join the straight-four remnant productively in six of ten poses. The three loose pairs can also form dominoes at rate one per pair. The maximum probability that the first join productively attaches to the remnant is therefore $(3\cdot6/10)/(3+3\cdot6/10)=3/8$.
+
+After a pair forms, the remnant can gain the singleton at rate at most $6/10$ or the domino at rate at most $6/24$. The replacement domino and singleton can make the straight trimer at rate $2/6$. The two straight placements are exchanged by a half-turn of the domino, so a blank whole-body rule that produces a straight trimer must allow both. The resulting three and four cannot repair together. The probability of a successful branch from this intermediate inventory is at most $(6/10+6/24)/(6/10+6/24+2/6)=51/71$.
+
+Enabling every productive attachment attains both bounds. Each such attachment reaches a five- or six-cell body that already occurs in the ordinary catalogue, together with ordinary residual parts, so its continuation is guaranteed by replay. The straight-four remnant itself is absent from ordinary assembly, so these additional joins leave the ordinary guarantee and exact catalogue intact. The repair probability is $3/8+(5/8)(51/71)=117/142$, about $82.4\%$. [General probability calculation](fixed-target.md#possibility-guarantee-and-probability)
+
+![A straight-four remnant and its replacements can reach a repaired target or stall after the replacements form a straight trimer](../figures/seven-square-repair-probability.png)
+
 ## A pulse that changes the next repair
 
 Use the [frozen matching rule](power-completeness.md#simpler-binding-tables). Add a temporary Boolean input at one cell during updates. Hold the assembled body fixed during the input and subsequent settling. The control has input zero throughout. In both trials delete the same corner only after the intact body settles with no input, then let the remnant settle before any repair join.

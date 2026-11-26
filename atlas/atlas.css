@@ -7,7 +7,7 @@
   --edge: light-dark(#d8ded7, #424946);
   --accent: light-dark(#155e58, #91d6c5);
   --tile: light-dark(#c6dfd4, #476964);
-  --impossible: light-dark(#84452f, #f2b996);
+  --no-guarantee: light-dark(#84452f, #f2b996);
   font-family: ui-sans-serif, system-ui, sans-serif;
   background: var(--background);
   color: var(--ink);
@@ -47,7 +47,7 @@ button:disabled { opacity: .55; }
 .shape-link[aria-current] { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
 .shape-link strong, .shape-status, #range { font-variant-numeric: tabular-nums; }
 .yes { color: var(--accent); }
-.no { color: var(--impossible); }
+.no { color: var(--no-guarantee); }
 .shape { display: block; width: 100%; }
 .shape polygon { fill: var(--tile); stroke: var(--accent); stroke-width: .8; vector-effect: non-scaling-stroke; stroke-linejoin: round; }
 .shape-link .shape { height: 52px; max-width: 88px; }

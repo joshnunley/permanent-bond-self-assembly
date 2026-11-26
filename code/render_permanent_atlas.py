@@ -43,7 +43,7 @@ def state_counts(rows):
 
 
 def stock_page(kind, stock, rows, limit):
-    total, guaranteed, impossible, factorizations, mirror_groups = totals(rows)
+    total, guaranteed, without_guarantee, factorizations, mirror_groups = totals(rows)
     stock_links = ' '.join(f'<a href="stock-{m:02}.html"' +
                            (' aria-current="page"' if m == stock else '') + f'>{m}</a>'
                            for m in range(1, limit + 1))
@@ -56,7 +56,7 @@ def stock_page(kind, stock, rows, limit):
 <nav class="trail" aria-label="Breadcrumb"><a href="../index.html">Atlas</a> / <a href="index.html">{kind.title()}</a> / Stock {stock}</nav>
 <header>
   <h1>{stock} {kind}</h1>
-  <p>{total:,} shapes · {guaranteed:,} guaranteed · {impossible:,} impossible</p>
+  <p>{total:,} shapes · {guaranteed:,} guaranteed · {without_guarantee:,} without a guaranteeing rule</p>
   <p>{factorizations:,} maximal factorization sets · {mirror_groups:,} up to reflection</p>
 {state_summary}
 </header>
@@ -65,7 +65,7 @@ def stock_page(kind, stock, rows, limit):
   <section class="gallery" aria-labelledby="shape-list-title">
     <h2 id="shape-list-title">Shapes</h2>
     <div class="filters">
-      <label>Result<select id="status"><option value="all">All shapes</option><option value="yes">Guaranteed</option><option value="no">Impossible</option>{state_filters}</select></label>
+      <label>Result<select id="status"><option value="all">All shapes</option><option value="yes">Guaranteed</option><option value="no">No guaranteeing rule</option>{state_filters}</select></label>
       <label>Shape ID<input id="search" type="search" autocomplete="off" placeholder="e.g. {rows[0]['id']}"></label>
     </div>
     <div class="pagination"><button type="button" id="previous">Previous</button><span id="range" aria-live="polite"></span><button type="button" id="next">Next</button></div>
@@ -110,7 +110,7 @@ def publish(data, output):
 <nav class="trail" aria-label="Breadcrumb"><a href="../index.html">Atlas</a> / {kind.title()}</nav>
 <header><h1>{title}</h1><p>Guaranteed targets and all inclusion-maximal sets of permanent intermediate shapes.</p></header>
 <div class="table-wrap"><table>
-<thead><tr><th scope="col">Stock</th><th scope="col">Shapes</th><th scope="col">Guaranteed</th><th scope="col">Impossible</th><th scope="col">Maximal sets</th><th scope="col">Up to reflection</th>{state_columns}</tr></thead>
+<thead><tr><th scope="col">Stock</th><th scope="col">Shapes</th><th scope="col">Guaranteed</th><th scope="col">No guaranteeing rule</th><th scope="col">Maximal sets</th><th scope="col">Up to reflection</th>{state_columns}</tr></thead>
 <tbody>{''.join(table)}</tbody>
 </table></div>
 '''
@@ -126,6 +126,7 @@ def publish(data, output):
 <nav aria-label="Polygon atlases"><ul>{''.join(links)}</ul></nav>
 <h2>How to read a shape page</h2>
 <p>Each stock page lists all edge-connected target shapes up to rotation, translation, and reflection. Open a guaranteed target to see all its maximal sets of permitted parts. Intermediate parts keep their proper orientation class, so a reflected part can occupy a separate entry. The factorization count up to reflection identifies a set with its whole mirror image.</p>
+<p>A shape listed under “No guaranteeing rule” can still be produced in some histories. <a href="../proofs/fixed-target.md#possibility-guarantee-and-probability">How guarantees differ from success probabilities</a></p>
 <p>A smaller part links to the page where it is treated as a target in its own right. A part may occur inside a successful large-stock rule even when it cannot itself be guaranteed at its own stock.</p>
 {state_intro}
 <p><a href="README.md">Method, verification, and reproduction</a></p>

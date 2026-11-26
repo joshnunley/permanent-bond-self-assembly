@@ -12,7 +12,7 @@ A geometric join of two types is any placement of the two bodies with disjoint i
 2. Every inventory of members of $F$ with total stock $N$ and at least two bodies offers a geometric join whose output belongs to $F$.
 3. Each nonsingleton member of $F$ is a geometric join of two smaller members.
 
-In particular $T$ is achievable exactly when such a catalogue exists. A **valid factorization** is an exact catalogue as above. It is **maximal** if it has no valid strict superset.
+In particular $T$ can be guaranteed exactly when such a catalogue exists. A **valid factorization** is an exact catalogue as above. It is **maximal** if it has no valid strict superset.
 
 **Proof.** If a part occurs, its entire build can be replayed using just its constituent cells. All choices depend on the participants of a join, so several of these histories can be replayed side by side, including separate copies of the same part. Every stock-$N$ inventory of occurring types can therefore be realized. It must be able to continue and eventually become $T$. Permanence embeds every part in the finish. Taking the last join that made each nonsingleton proves condition 3.
 
@@ -31,3 +31,23 @@ For the converse, label each exposed edge by its blank geometric part type toget
 There is also a simple obstruction at every stock. Pair single cells until at most one is left. In any guaranteed target the resulting dimers must all fit, so the target's contact graph needs a matching covering all but at most one cell. At stock eight this test alone is insufficient. A seven-cell straight row with an eighth square attached above its end has such a matching. Its contact graph is a path whose only connected equal split gives a bent four and a straight four, so it cannot be guaranteed. The eight-square ring does split recursively into congruent halves. [Its maximal factorizations](../atlas/squares/stock-08.html#S08-0198)
 
 The [four-cell square](../atlas/squares/stock-04.html#S04-0005) illustrates the difference between an exact catalogue and a maximal one. A pairing-only rule reaches just the singleton, domino and square. A rule can also allow a domino and singleton to form a bent three, and let it close with the fourth square. Both guarantee the same target. The pairing-only rule can stall on an isolated stock of three. This is the difference between the fixed-target and [all-stock](all-stocks.md) guarantees.
+
+## Possibility, guarantee and probability
+
+Fix a rule and an initial inventory. Give each allowed join positive probability of being the next join whenever it is available. This holds, for example, under the [positive-rate encounter law](propagation.md#encounter-time-from-a-fixed-rule). Write $p$ for the probability that a run finishes in the target.
+
+| Probability | Histories from the same starting inventory |
+| --- | --- |
+| $p=0$ | No permitted history finishes in the target. |
+| $0<p<1$ | Some permitted histories finish in the target. Others stall or finish in a different shape. |
+| $p=1$ | Every maximal history finishes in the target. |
+
+Every history has at most $N-1$ joins, so any particular finite sequence of allowed placements has positive probability. This proves the three cases under the stated law. With rates $r_e(x)$ for the joins at inventory $x$ and successors $y_e$, calculate $p(x)$ backwards by body count. Give target finishes value one, other terminal inventories value zero, and use
+
+$$
+p(x)=\frac{\sum_e r_e(x)p(y_e)}{\sum_e r_e(x)}
+$$
+
+at every inventory with an allowed join. The same calculation works for a [repair inventory](repair.md).
+
+The atlas asks whether **some** permanent rule guarantees each target. Every connected target in it can occur under the rule allowing all full-edge joins. Grow a copy of the target one cell at a time along a spanning tree of its contact graph. For example, the [eight-square end-foot path](../atlas/squares/stock-08.html#S08-0002) has no guaranteeing rule by the pairing theorem. The all-joins rule gives it a positive probability, and the same rule can also build the straight row, so its probability is below one. The numerical probability depends on the chosen law and rule.

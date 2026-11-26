@@ -4,6 +4,8 @@ The atlas exhausts every connected target through stock ten in the [fixed-stock 
 
 From a local clone, open [the combined index](index.html), [triangle atlas](triangles/index.html) or [square atlas](squares/index.html) in a browser. Each shape has a direct link, for example [the eight-square ring](squares/stock-08.html#S08-0198). Parts are linked to their own stock pages, where they can be treated as targets themselves.
 
+**No guaranteeing rule** means every permanent rule has a failing history at that stock. The shape can still occur in a successful history. A numerical success probability requires a particular rule and encounter law. [Possibility, guarantee and probability](../proofs/fixed-target.md#possibility-guarantee-and-probability)
+
 ![Fraction of guaranteed triangle and square shapes by stock, with four examples at stock ten](overview.png)
 
 ## Counts
